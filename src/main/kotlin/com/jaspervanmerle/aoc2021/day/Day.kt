@@ -20,7 +20,7 @@ abstract class Day(private val answerPartOne: String? = null, private val answer
 
     protected fun getInput(): String {
         return javaClass
-            .getResource("/input-${number.toString().padStart(2, '0')}.txt")
+            .getResource("/input-${number.toString().padStart(2, '0')}.txt")!!
             .readText()
             .trim()
     }
