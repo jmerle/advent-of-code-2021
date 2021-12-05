@@ -1,7 +1,5 @@
 package com.jaspervanmerle.aoc2021.day
 
-private typealias Board = List<List<Int>>
-
 class Day04 : Day("25410", "2730") {
     private val markedNumbers = getInput()
         .lines()[0]
