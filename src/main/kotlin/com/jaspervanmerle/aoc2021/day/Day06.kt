@@ -15,19 +15,16 @@ class Day06 : Day("380758", "1710623015163") {
 
     private fun getFishAfterDays(days: Int): Long {
         var currentTimerCounts = LongArray(9)
-        val newTimerCounts = LongArray(9)
 
         for (timer in timers) {
             currentTimerCounts[timer]++
         }
 
         for (i in 0 until days) {
-            for (j in currentTimerCounts.indices) {
-                newTimerCounts[j] = currentTimerCounts[(j + 1) % 9]
+            currentTimerCounts = LongArray(9) {
+                val newTimers = if (it == 6) currentTimerCounts[0] else 0
+                currentTimerCounts[(it + 1) % 9] + newTimers
             }
-
-            newTimerCounts[6] += currentTimerCounts[0]
-            currentTimerCounts = newTimerCounts.clone()
         }
 
         return currentTimerCounts.sum()
