@@ -1,6 +1,6 @@
 package com.jaspervanmerle.aoc2021.day
 
-class Day10 : Day("390993") {
+class Day10 : Day("390993", "2391385187") {
     private val lines = getInput().lines()
 
     private val openCharacterByClosing = mapOf(
