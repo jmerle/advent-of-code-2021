@@ -1,7 +1,7 @@
 package com.jaspervanmerle.aoc2021.day
 
 class Day02 : Day("1804520", "1971095320") {
-    private val commands = getInput()
+    private val commands = input
         .lines()
         .map { it.split(" ") }
         .map { it[0] to it[1].toInt() }

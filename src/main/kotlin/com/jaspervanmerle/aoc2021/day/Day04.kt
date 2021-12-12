@@ -1,12 +1,12 @@
 package com.jaspervanmerle.aoc2021.day
 
 class Day04 : Day("25410", "2730") {
-    private val markedNumbers = getInput()
+    private val markedNumbers = input
         .lines()[0]
         .split(",")
         .map { it.toInt() }
 
-    private val boards = getInput().split("\n\n").drop(1).map { board ->
+    private val boards = input.split("\n\n").drop(1).map { board ->
         board.split("\n").map { row ->
             row.split(" ").filter { it.isNotBlank() }.map { it.toInt() }
         }

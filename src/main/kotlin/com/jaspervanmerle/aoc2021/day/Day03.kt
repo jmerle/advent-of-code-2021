@@ -1,7 +1,7 @@
 package com.jaspervanmerle.aoc2021.day
 
 class Day03 : Day("3959450", "7440311") {
-    private val numbers = getInput().lines()
+    private val numbers = input.lines()
 
     override fun solvePartOne(): Any {
         val gammaRate = getRate { zeros, ones -> zeros > ones }

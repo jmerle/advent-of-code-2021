@@ -3,6 +3,13 @@ package com.jaspervanmerle.aoc2021.day
 abstract class Day(private val answerPartOne: String? = null, private val answerPartTwo: String? = null) {
     val number = javaClass.simpleName.replace("Day", "").toInt()
 
+    protected val input by lazy {
+        javaClass
+            .getResource("/input-${number.toString().padStart(2, '0')}.txt")!!
+            .readText()
+            .trim()
+    }
+
     protected abstract fun solvePartOne(): Any
     protected abstract fun solvePartTwo(): Any
 
@@ -16,12 +23,5 @@ abstract class Day(private val answerPartOne: String? = null, private val answer
         1 -> answerPartOne
         2 -> answerPartTwo
         else -> throw Error("Part $part does not exist")
-    }
-
-    protected fun getInput(): String {
-        return javaClass
-            .getResource("/input-${number.toString().padStart(2, '0')}.txt")!!
-            .readText()
-            .trim()
     }
 }

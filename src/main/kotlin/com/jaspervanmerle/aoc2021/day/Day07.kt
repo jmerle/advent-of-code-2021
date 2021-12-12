@@ -3,7 +3,7 @@ package com.jaspervanmerle.aoc2021.day
 import kotlin.math.abs
 
 class Day07 : Day("356179", "99788435") {
-    private val positions = getInput()
+    private val positions = input
         .split(",")
         .map { it.toInt() }
 

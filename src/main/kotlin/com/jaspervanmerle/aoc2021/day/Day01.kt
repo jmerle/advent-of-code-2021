@@ -1,7 +1,7 @@
 package com.jaspervanmerle.aoc2021.day
 
 class Day01 : Day("1752", "1781") {
-    private val depths = getInput()
+    private val depths = input
         .lines()
         .map { it.toInt() }
 

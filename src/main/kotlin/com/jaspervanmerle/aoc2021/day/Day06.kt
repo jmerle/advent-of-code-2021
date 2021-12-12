@@ -1,7 +1,7 @@
 package com.jaspervanmerle.aoc2021.day
 
 class Day06 : Day("380758", "1710623015163") {
-    private val timers = getInput()
+    private val timers = input
         .split(",")
         .map { it.toInt() }
 

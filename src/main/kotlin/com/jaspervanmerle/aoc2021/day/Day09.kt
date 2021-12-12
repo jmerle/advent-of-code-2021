@@ -1,7 +1,7 @@
 package com.jaspervanmerle.aoc2021.day
 
 class Day09 : Day("572", "847044") {
-    private val map = getInput()
+    private val map = input
         .lines()
         .map { line -> line.toCharArray().map { it.digitToInt() } }
 

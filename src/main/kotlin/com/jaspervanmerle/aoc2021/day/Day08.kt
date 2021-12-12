@@ -3,7 +3,7 @@ package com.jaspervanmerle.aoc2021.day
 class Day08 : Day("321", "1028926") {
     private data class Entry(val signalPatterns: List<String>, val outputPatterns: List<String>)
 
-    private val entries = getInput()
+    private val entries = input
         .lines()
         .map { it.split(" | ") }
         .map { Entry(it[0].split(" "), it[1].split(" ")) }

@@ -24,7 +24,7 @@ class Day05 : Day("4993", "21101") {
         }
     }
 
-    private val lines = getInput()
+    private val lines = input
         .lines()
         .flatMap { it.split(" -> ") }
         .map {
