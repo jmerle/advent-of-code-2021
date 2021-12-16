@@ -29,7 +29,7 @@ class Day16 : Day("1007", "834151779165") {
         companion object {
             fun parse(bits: Bits): Packet {
                 bits.popBits(3)
-                return when (val typeId = bits.popInt(3)) {
+                return when (val packetTypeId = bits.popInt(3)) {
                     4 -> LiteralPacket(bits)
                     0 -> SumPacket(bits)
                     1 -> ProductPacket(bits)
@@ -38,7 +38,7 @@ class Day16 : Day("1007", "834151779165") {
                     5 -> GreaterThanPacket(bits)
                     6 -> LessThanPacket(bits)
                     7 -> EqualToPacket(bits)
-                    else -> throw RuntimeException("Unknown type id $typeId")
+                    else -> throw RuntimeException("Unknown packet type id $packetTypeId")
                 }
             }
         }
@@ -138,8 +138,8 @@ class Day16 : Day("1007", "834151779165") {
         while (!bits.isEmpty()) {
             versionSum += bits.popInt(3)
 
-            val typeId = bits.popInt(3)
-            if (typeId == 4) {
+            val packetTypeId = bits.popInt(3)
+            if (packetTypeId == 4) {
                 while (true) {
                     val part = bits.popBits(5)
                     if (part[0] == '0') {
