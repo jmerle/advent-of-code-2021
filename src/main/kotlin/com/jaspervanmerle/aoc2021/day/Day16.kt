@@ -6,14 +6,14 @@ class Day16 : Day("1007", "834151779165") {
             .toCharArray()
             .joinToString("") { it.digitToInt(16).toString(2).padStart(4, '0') }
 
-        fun popBits(count: Int): String {
-            val removedBits = bits.substring(0, count)
-            bits = bits.substring(count)
+        fun popBits(bitCount: Int): String {
+            val removedBits = bits.substring(0, bitCount)
+            bits = bits.substring(bitCount)
             return removedBits
         }
 
-        fun popInt(count: Int): Int {
-            return popBits(count).toInt(2)
+        fun popInt(bitCount: Int): Int {
+            return popBits(bitCount).toInt(2)
         }
 
         fun getSize(): Int {
