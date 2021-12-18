@@ -4,7 +4,7 @@ class Day18 : Day("4124", "4673") {
     private data class Element(var value: Int, var depth: Int)
 
     override fun solvePartOne(): Any {
-        val numbers = input.lines().map { parseElements(it) }
+        val numbers = input.lines().map { parseLine(it) }
 
         var result = numbers[0]
         for (number in numbers.drop(1)) {
@@ -15,14 +15,14 @@ class Day18 : Day("4124", "4673") {
     }
 
     override fun solvePartTwo(): Any {
-        val numbers = input.lines().map { parseElements(it) }
+        val numbers = input.lines().map { parseLine(it) }
 
         return numbers.indices
             .flatMap { i -> numbers.indices.filter { it != i }.map { i to it } }
             .maxOf { magnitude(add(numbers[it.first], numbers[it.second])) }
     }
 
-    private fun parseElements(line: String): MutableList<Element> {
+    private fun parseLine(line: String): MutableList<Element> {
         val elements = mutableListOf<Element>()
         var currentDepth = 0
 
@@ -39,11 +39,9 @@ class Day18 : Day("4124", "4673") {
     }
 
     private fun add(lhs: List<Element>, rhs: List<Element>): MutableList<Element> {
-        val newElements = (lhs + rhs).map { it.copy() }.toMutableList()
-
-        for (element in newElements) {
-            element.depth++
-        }
+        val newElements = (lhs + rhs)
+            .map { it.copy(depth = it.depth + 1) }
+            .toMutableList()
 
         while (true) {
             if (explode(newElements)) {
