@@ -1,5 +1,7 @@
 package com.jaspervanmerle.aoc2021.day
 
+import kotlin.math.max
+
 class Day21 : Day("888735", "647608359455719") {
     private val startingPositionOne = input.lines()[0].split(" ").last().toInt()
     private val startingPositionTwo = input.lines()[1].split(" ").last().toInt()
@@ -34,28 +36,29 @@ class Day21 : Day("888735", "647608359455719") {
     }
 
     override fun solvePartTwo(): Any {
-        return countWins(startingPositionOne, startingPositionTwo).maxOf { it }
+        val wins = countWins(startingPositionOne, startingPositionTwo)
+        return max(wins.first, wins.second)
     }
 
     private fun countWins(
         positionOne: Int, positionTwo: Int,
         scoreOne: Int = 0, scoreTwo: Int = 0,
-        knownStates: MutableMap<Pair<Pair<Int, Int>, Pair<Int, Int>>, LongArray> = mutableMapOf()
-    ): LongArray {
+        knownStates: MutableMap<Pair<Pair<Int, Int>, Pair<Int, Int>>, Pair<Long, Long>> = mutableMapOf()
+    ): Pair<Long, Long> {
         if (scoreOne >= 21) {
-            return longArrayOf(1, 0)
+            return 1L to 0L
         }
 
         if (scoreTwo >= 21) {
-            return longArrayOf(0, 1)
+            return 0L to 1L
         }
 
-        val state = (positionOne to scoreOne) to (positionTwo to scoreTwo)
+        val state = (positionOne to positionTwo) to (scoreOne to scoreTwo)
         if (knownStates.containsKey(state)) {
             return knownStates[state]!!
         }
 
-        val wins = longArrayOf(0, 0)
+        var wins = 0L to 0L
 
         for (roll1 in 1..3) {
             for (roll2 in 1..3) {
@@ -64,8 +67,7 @@ class Day21 : Day("888735", "647608359455719") {
                     val newScoreOne = scoreOne + newPositionOne
 
                     val deltaWins = countWins(positionTwo, newPositionOne, scoreTwo, newScoreOne, knownStates)
-                    wins[0] += deltaWins[1]
-                    wins[1] += deltaWins[0]
+                    wins = (wins.first + deltaWins.second) to (wins.second + deltaWins.first)
                 }
             }
         }
