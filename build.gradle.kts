@@ -12,7 +12,7 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib"))
-    implementation("io.github.classgraph:classgraph:4.8.137")
+    implementation("io.github.classgraph:classgraph:4.8.138")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")
