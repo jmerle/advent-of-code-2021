@@ -26,35 +26,20 @@ class Day22 : Day("655005", "1125649856443608") {
             val middleZ = max(zRange.first, other.zRange.first)..min(zRange.last, other.zRange.last)
             val aboveZ = other.zRange.last + 1..zRange.last
 
-            return listOf(
-                Cuboid(belowX, belowY, belowZ),
-                Cuboid(belowX, belowY, middleZ),
-                Cuboid(belowX, belowY, aboveZ),
-                Cuboid(belowX, middleY, belowZ),
-                Cuboid(belowX, middleY, middleZ),
-                Cuboid(belowX, middleY, aboveZ),
-                Cuboid(belowX, aboveY, belowZ),
-                Cuboid(belowX, aboveY, middleZ),
-                Cuboid(belowX, aboveY, aboveZ),
-                Cuboid(middleX, belowY, belowZ),
-                Cuboid(middleX, belowY, middleZ),
-                Cuboid(middleX, belowY, aboveZ),
-                Cuboid(middleX, middleY, belowZ),
-                Cuboid(middleX, middleY, middleZ),
-                Cuboid(middleX, middleY, aboveZ),
-                Cuboid(middleX, aboveY, belowZ),
-                Cuboid(middleX, aboveY, middleZ),
-                Cuboid(middleX, aboveY, aboveZ),
-                Cuboid(aboveX, belowY, belowZ),
-                Cuboid(aboveX, belowY, middleZ),
-                Cuboid(aboveX, belowY, aboveZ),
-                Cuboid(aboveX, middleY, belowZ),
-                Cuboid(aboveX, middleY, middleZ),
-                Cuboid(aboveX, middleY, aboveZ),
-                Cuboid(aboveX, aboveY, belowZ),
-                Cuboid(aboveX, aboveY, middleZ),
-                Cuboid(aboveX, aboveY, aboveZ)
-            ).filter { it.volume > 0 && !it.overlapsWith(other) }
+            val cuboids = mutableListOf<Cuboid>()
+
+            for (x in listOf(belowX, middleX, aboveX)) {
+                for (y in listOf(belowY, middleY, aboveY)) {
+                    for (z in listOf(belowZ, middleZ, aboveZ)) {
+                        val cuboid = Cuboid(x, y, z)
+                        if (cuboid.volume > 0 && !cuboid.overlapsWith(other)) {
+                            cuboids.add(cuboid)
+                        }
+                    }
+                }
+            }
+
+            return cuboids
         }
 
         private fun IntRange.size(): Long {
