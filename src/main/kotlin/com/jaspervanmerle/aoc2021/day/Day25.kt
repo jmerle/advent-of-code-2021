@@ -13,7 +13,7 @@ class Day25 : Day("492", "Remote start") {
             }
         }
 
-        return -1
+        throw Error("There is no state in which 0 entities move")
     }
 
     override fun solvePartTwo(): Any {
@@ -25,10 +25,11 @@ class Day25 : Day("492", "Remote start") {
         type: Char,
         getNextLocation: (x: Int, y: Int, width: Int, height: Int) -> Pair<Int, Int>
     ): Boolean {
+        val moves = mutableListOf<Pair<Int, Int>>()
+
         val width = state[0].size
         val height = state.size
 
-        val moves = mutableListOf<Pair<Int, Int>>()
         for (y in 0 until height) {
             for (x in 0 until width) {
                 if (state[y][x] != type) {

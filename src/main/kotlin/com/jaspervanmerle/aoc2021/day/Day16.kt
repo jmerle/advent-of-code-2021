@@ -38,7 +38,7 @@ class Day16 : Day("1007", "834151779165") {
                     5 -> GreaterThanPacket(bits)
                     6 -> LessThanPacket(bits)
                     7 -> EqualToPacket(bits)
-                    else -> throw RuntimeException("Unknown packet type id $packetTypeId")
+                    else -> throw IllegalArgumentException("Unknown packet type id $packetTypeId")
                 }
             }
         }
