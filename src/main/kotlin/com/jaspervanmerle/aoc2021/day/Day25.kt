@@ -2,10 +2,7 @@ package com.jaspervanmerle.aoc2021.day
 
 class Day25 : Day("492", "Remote start") {
     override fun solvePartOne(): Any {
-        val state = input
-            .lines()
-            .map { it.toCharArray() }
-            .toTypedArray()
+        val state = input.lines().map { it.toCharArray() }
 
         for (i in 1..Int.MAX_VALUE) {
             val movedHorizontally = updateState(state, '>') { x, y, width, _ -> ((x + 1) % width) to y }
@@ -24,7 +21,7 @@ class Day25 : Day("492", "Remote start") {
     }
 
     private fun updateState(
-        state: Array<CharArray>,
+        state: List<CharArray>,
         type: Char,
         getNextLocation: (x: Int, y: Int, width: Int, height: Int) -> Pair<Int, Int>
     ): Boolean {
