@@ -4,7 +4,7 @@ class Day25 : Day("492", "Remote start") {
     override fun solvePartOne(): Any {
         val state = input
             .lines()
-            .map { line -> line.toCharArray() }
+            .map { it.toCharArray() }
             .toTypedArray()
 
         for (i in 1..Int.MAX_VALUE) {
