@@ -1,6 +1,6 @@
 package com.jaspervanmerle.aoc2021.day
 
-class Day25 : Day("492", "404") {
+class Day25 : Day("492", "Remote start") {
     override fun solvePartOne(): Any {
         val state = input
             .lines()
@@ -20,7 +20,7 @@ class Day25 : Day("492", "404") {
     }
 
     override fun solvePartTwo(): Any {
-        return 404
+        return "Remote start"
     }
 
     private fun updateState(
